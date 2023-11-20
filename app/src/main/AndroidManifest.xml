@@ -13,6 +13,36 @@
         android:theme="@style/Theme.IranName"
         tools:targetApi="31">
         <activity
+            android:name="com.android.iranname.shops.ShopActivity"
+            android:exported="false"
+            android:label="@string/title_activity_shop"
+            android:theme="@style/Theme.IranName" />
+        <activity
+            android:name="com.android.iranname.traditions.TraditionsActivity"
+            android:exported="false"
+            android:label="@string/title_activity_traditions"
+            android:theme="@style/Theme.IranName" />
+        <activity
+            android:name="com.android.iranname.litrature.LitratuerActivity"
+            android:exported="false"
+            android:label="@string/title_activity_litratuer"
+            android:theme="@style/Theme.IranName" />
+        <activity
+            android:name="com.android.iranname.landmarks.LandmarksActivity"
+            android:exported="false"
+            android:label="@string/title_activity_landmarks"
+            android:theme="@style/Theme.IranName" />
+        <activity
+            android:name="com.android.iranname.history.HistoryActivity"
+            android:exported="false"
+            android:label="@string/title_activity_history"
+            android:theme="@style/Theme.IranName" />
+        <activity
+            android:name="com.android.iranname.account.AccountActivity"
+            android:exported="false"
+            android:label="@string/title_activity_account"
+            android:theme="@style/Theme.IranName" />
+        <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name"

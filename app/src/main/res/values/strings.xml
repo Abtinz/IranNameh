@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">IranName</string>
+    <string name="title_activity_account">AccountActivity</string>
+    <string name="title_activity_history">HistoryActivity</string>
+    <string name="title_activity_landmarks">LandmarksActivity</string>
+    <string name="title_activity_litratuer">LitratuerActivity</string>
+    <string name="title_activity_traditions">TraditionsActivity</string>
+    <string name="title_activity_shop">ShopActivity</string>
 </resources>
