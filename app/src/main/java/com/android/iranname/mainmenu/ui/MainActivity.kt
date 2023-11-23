@@ -1,4 +1,4 @@
-package com.android.iranname.mainmenu
+package com.android.iranname.mainmenu.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,7 +10,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.android.iranname.ui.theme.IranNameTheme
+import com.android.iranname.mainmenu.ui.theme.IranNameTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.android.iranname">
+
 
     <application
         android:allowBackup="true"
@@ -43,7 +45,7 @@
             android:label="@string/title_activity_account"
             android:theme="@style/Theme.IranName" />
         <activity
-            android:name=".MainActivity"
+            android:name="com.android.iranname.mainmenu.ui.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.IranName">
