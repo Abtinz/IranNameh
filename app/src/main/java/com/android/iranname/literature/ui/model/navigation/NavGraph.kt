@@ -5,20 +5,40 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.android.iranname.mainmenu.ui.screen.HomePageScreen
+import com.android.iranname.literature.ui.model.screen.LiteratureScreen
+import com.android.iranname.literature.ui.screens.LiteraturePageScreen
+import com.android.iranname.literature.ui.screens.PoetPageScreen
+import com.android.iranname.literature.ui.screens.PoetryPageScreen
 
-const val homeScreenRoute = "HOME"
+
 
 @ExperimentalMaterialApi
 @Composable
-fun LiteraturePageNavGraph (navHostController: NavHostController){
+fun LiteraturePageNavGraph(navHostController: NavHostController) {
 
     NavHost(
         navController = navHostController,
-        startDestination = homeScreenRoute
+        startDestination = LiteratureScreen.Literature.route
     ) {
-        composable(route = homeScreenRoute) {
-            HomePageScreen()
+        composable(route = LiteratureScreen.Literature.route) {
+            LiteraturePageScreen(navHostController)
+        }
+
+        composable(route = LiteratureScreen.Poet.route) { backStackEntry ->
+            val poetName = backStackEntry.arguments?.getString("poetName")
+
+            if (poetName != null) {
+                PoetPageScreen(poetName = poetName, navController = navHostController)
+            }
+        }
+
+        composable(route = LiteratureScreen.Poetry.route) { backStackEntry ->
+            val poetryName = backStackEntry.arguments?.getString("poetryName")
+            val poetName = backStackEntry.arguments?.getString("poetName")
+
+            if (poetryName != null && poetName != null) {
+                PoetryPageScreen(poetryName = poetryName, poetName = poetName)
+            }
         }
     }
 }
