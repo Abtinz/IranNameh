@@ -16,7 +16,7 @@ import com.squareup.moshi.Moshi
 
 @ExperimentalMaterialApi
 @Composable
-fun HomePageNavGraph (navHostController: NavHostController){
+fun LandmarkNavGraph (navHostController: NavHostController){
 
     NavHost(
         navController = navHostController,
