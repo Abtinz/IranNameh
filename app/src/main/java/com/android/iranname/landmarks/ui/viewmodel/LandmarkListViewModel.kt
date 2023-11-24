@@ -65,7 +65,7 @@ class LandmarkListViewModel():ViewModel() {
             ),
 
             LandmarksDC(
-                name = context.getString(R.string.takhtJamshi_title),
+                name = context.getString(R.string.takhtJamshid_title),
                 image = LandmarksImagesURI.TakhtJamshi_First_URI,
                 images = listOf(
                     LandmarksImagesURI.TakhtJamshi_First_URI,
@@ -73,9 +73,9 @@ class LandmarkListViewModel():ViewModel() {
                     LandmarksImagesURI.TakhtJamshi_Third_URI,
                     LandmarksImagesURI.TakhtJamshi_Fourth_URI
                 ),
-                location = context.getString(R.string.takhtJamshi_location) ,
-                foundation = context.getString(R.string.takhtJamshi_foundation),
-                description = context.getString(R.string.takhtJamshi_description),
+                location = context.getString(R.string.takhtJamshid_location) ,
+                foundation = context.getString(R.string.takhtJamshid_foundation),
+                description = context.getString(R.string.takhtJamshid_description),
                 comments = null,
                 relatedLandmarksDC = null
             ),
