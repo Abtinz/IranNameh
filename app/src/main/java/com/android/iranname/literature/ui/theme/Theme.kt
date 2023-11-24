@@ -1,4 +1,4 @@
-package com.android.iranname.litrature.ui.theme
+package com.android.iranname.literature.ui.theme
 
 import android.app.Activity
 import android.os.Build
@@ -16,15 +16,15 @@ import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+    primary = DarkBlur,
+    secondary = LightBlue,
+    tertiary = SemiLightBlue
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
+    primary = Cream,
+    secondary = DarkBlur,
+    tertiary = SemiLightBlue
 
     /* Other default colors to override
     background = Color(0xFFFFFBFE),
