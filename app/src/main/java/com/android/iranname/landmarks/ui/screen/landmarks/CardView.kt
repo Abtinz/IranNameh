@@ -75,12 +75,14 @@ fun LandmarksCardView(landmarksDC: LandmarksDC,navController: NavController) {
             val density = LocalDensity.current
             Text(
                 text = landmarksDC.name,
+                textAlign = TextAlign.Right,
                 style = MaterialTheme.typography.displaySmall,
                 fontWeight = FontWeight.Bold,
                 fontSize = with(density){24.dp.toSp()},
                 color = primary,
                 modifier = Modifier
                     .padding(10.dp)
+                    .fillMaxWidth()
             )
 
             Row (
@@ -96,6 +98,7 @@ fun LandmarksCardView(landmarksDC: LandmarksDC,navController: NavController) {
 
                 Text(
                     text = landmarksDC.location,
+                    textAlign = TextAlign.Right,
                     style = MaterialTheme.typography.displaySmall,
                     fontSize = with(density){16.dp.toSp()},
                     color = primary,
@@ -112,7 +115,7 @@ fun LandmarksCardView(landmarksDC: LandmarksDC,navController: NavController) {
             ExpandableText(
                 originalText = landmarksDC.description,
                 style = TextStyle(
-                    textAlign = TextAlign.Justify
+                    textAlign = TextAlign.Right
                 ),
                 expandAction = "See More",
                 expandActionColor = primary,
