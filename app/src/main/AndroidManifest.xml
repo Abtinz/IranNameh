@@ -34,7 +34,7 @@
             android:label="@string/title_activity_litratuer"
             android:theme="@style/Theme.IranName" />
         <activity
-            android:name=".landmarks.LandmarksActivity"
+            android:name=".landmarks.ui.activity.LandmarksActivity"
             android:exported="false"
             android:label="@string/title_activity_landmarks"
             android:theme="@style/Theme.IranName" />

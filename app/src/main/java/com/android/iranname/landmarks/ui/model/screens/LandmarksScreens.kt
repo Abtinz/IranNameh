@@ -4,7 +4,7 @@ import com.android.iranname.landmarks.model.LandmarksDC
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 
-sealed class LandmarksScreens(route:String) {
+sealed class LandmarksScreens(val route:String) {
     object MainMenu : LandmarksScreens(route = "home")
     object LandmarksScreen:LandmarksScreens(route = "landmarks/page/{landmarks}"){
         fun passInfo(landmarks: LandmarksDC):String{

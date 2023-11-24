@@ -14,7 +14,7 @@ import androidx.compose.ui.res.stringResource
 import com.android.iranname.R
 import com.android.iranname.commonServices.network.url.IconsURI
 import com.android.iranname.history.HistoryActivity
-import com.android.iranname.landmarks.LandmarksActivity
+import com.android.iranname.landmarks.ui.activity.LandmarksActivity
 import com.android.iranname.literature.LiteratureActivity
 import com.android.iranname.mainmenu.ui.HomePageCategoriesCardView
 import com.android.iranname.mainmenu.ui.theme.tertiary

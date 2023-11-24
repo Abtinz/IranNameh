@@ -1,4 +1,4 @@
-package com.android.iranname.landmarks
+package com.android.iranname.landmarks.ui.activity
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
