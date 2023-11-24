@@ -40,7 +40,7 @@ fun HomePageCategoriesCardView(title: String, image: String, modifier: Modifier,
             Image(
                 painter = rememberAsyncImagePainter(model = image),
                 contentDescription = "" ,
-                contentScale = ContentScale.Crop,
+                contentScale = ContentScale.FillBounds,
             )
         }
 

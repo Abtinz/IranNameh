@@ -1,6 +1,7 @@
 package com.android.iranname.mainmenu.ui.screen
 
 import android.content.Intent
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -16,6 +17,7 @@ import com.android.iranname.history.HistoryActivity
 import com.android.iranname.landmarks.LandmarksActivity
 import com.android.iranname.litrature.LitratuerActivity
 import com.android.iranname.mainmenu.ui.HomePageCategoriesCardView
+import com.android.iranname.mainmenu.ui.theme.tertiary
 import com.android.iranname.setting.SettingActivity
 import com.android.iranname.shops.ShopActivity
 import com.android.iranname.traditions.TraditionsActivity
@@ -25,7 +27,8 @@ fun HomePageScreen() {
     val context = LocalContext.current
     Box(
         modifier = Modifier
-            .fillMaxSize(),
+            .fillMaxSize()
+            .background(color = tertiary),
         contentAlignment = Alignment.Center
     ){
         LazyColumn{
