@@ -76,7 +76,7 @@ fun AppActionBar(
                 text = title,
                 color = secondary,
                 style = MaterialTheme.typography.titleMedium,
-                fontSize = with(density){30.dp.toSp()},
+                fontSize = with(density){25.dp.toSp()},
                 modifier = Modifier
                     .padding(start = halfWidth.dp)
             )
