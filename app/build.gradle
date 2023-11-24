@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.businesscard'
+    namespace 'com.android.iranname'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.example.businesscard"
+        applicationId "com.android.iranname"
         minSdk 23
         targetSdk 33
         versionCode 1
