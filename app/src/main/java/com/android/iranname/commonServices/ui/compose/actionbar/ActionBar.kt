@@ -28,7 +28,7 @@ fun HomeActionBar(){
     val context = LocalContext.current
     val density = LocalDensity.current
     val configuration = LocalConfiguration.current
-    val halfWidth = configuration.screenWidthDp.toInt() / 3
+    val halfWidth = configuration.screenWidthDp / 3
     TopAppBar(
         elevation = 1.dp,
         title = {
