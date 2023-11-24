@@ -47,7 +47,7 @@ fun HomePageScreen() {
                     }
 
                     HomePageCategoriesCardView(
-                        title = stringResource(id = R.string.title_activity_litratuer) ,
+                        title = stringResource(id = R.string.title_activity_literature) ,
                         image = IconsURI.LITERATURE_ICON_URI,
                         modifier = Modifier.weight(1f),
                     ){
