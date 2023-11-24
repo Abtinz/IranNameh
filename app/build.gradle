@@ -61,25 +61,18 @@ dependencies {
     implementation libs.androidx.material3
     implementation libs.coil
     implementation libs.expandible.text
-    implementation platform(libs.compose.bom)
-    implementation platform(libs.compose.bom)
-    implementation platform(libs.compose.bom)
-    implementation platform(libs.compose.bom)
-    implementation platform(libs.compose.bom)
-    implementation platform(libs.compose.bom)
-    implementation platform(libs.compose.bom)
+    implementation libs.androidx.navigation.runtime.ktx
+    implementation libs.navigation.compose
+    implementation libs.retrofit
+    implementation libs.retrofit.moshi.converter
+    implementation libs.moshi
+    implementation libs.moshi.kotlin
+    implementation libs.compose.compiler
+    implementation libs.androidx.work
     testImplementation libs.junit
     androidTestImplementation libs.androidx.test.ext.junit
     androidTestImplementation libs.espresso.core
-    androidTestImplementation platform(libs.compose.bom)
     androidTestImplementation libs.ui.test.junit4
-    androidTestImplementation platform(libs.compose.bom)
-    androidTestImplementation platform(libs.compose.bom)
-    androidTestImplementation platform(libs.compose.bom)
-    androidTestImplementation platform(libs.compose.bom)
-    androidTestImplementation platform(libs.compose.bom)
-    androidTestImplementation platform(libs.compose.bom)
-    androidTestImplementation platform(libs.compose.bom)
     debugImplementation libs.ui.tooling
     debugImplementation libs.ui.test.manifest
 }
