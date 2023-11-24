@@ -33,19 +33,24 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
 import com.android.iranname.landmarks.model.LandmarksDC
+import com.android.iranname.landmarks.ui.model.screens.LandmarksScreens
 import com.android.iranname.landmarks.ui.theme.informationText
 import com.android.iranname.landmarks.ui.theme.primary
 import com.android.iranname.landmarks.ui.theme.tertiary
 import io.github.giangpham96.expandable_text_compose.ExpandableText
 
 @Composable
-fun LandmarksCardView(landmarksDC: LandmarksDC) {
+fun LandmarksCardView(landmarksDC: LandmarksDC,navController: NavController) {
     Card(
         modifier = Modifier
             .padding(top = 10.dp, end = 10.dp, start = 10.dp)
             .background(color = tertiary, shape = RoundedCornerShape(8.dp))
+            .clickable {
+                navController.navigate(LandmarksScreens.LandmarksScreen.passInfo(landmarksDC))
+            }
             .animateContentSize(
                 animationSpec = tween(
                     easing = LinearOutSlowInEasing,

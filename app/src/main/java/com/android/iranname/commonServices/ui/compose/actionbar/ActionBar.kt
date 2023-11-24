@@ -9,6 +9,7 @@ import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -19,6 +20,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.android.iranname.R
 import com.android.iranname.account.AccountActivity
+import com.android.iranname.mainmenu.ui.MainActivity
 import com.android.iranname.mainmenu.ui.theme.primary
 import com.android.iranname.mainmenu.ui.theme.secondary
 
@@ -59,42 +61,40 @@ fun HomeActionBar(){
     )
 }
 
-//@Composable
-//fun AppActionBar(
-//    scope: CoroutineScope,
-//    scaffoldState: ScaffoldState,
-//    title: String,
-//){
-//    val context = LocalContext.current
-//    TopAppBar(
-//        elevation = 1.dp,
-//        title = { Text(text = title) } ,
-//        backgroundColor =  colorResource(id = R.color.primary),
-//        contentColor = colorResource(id = R.color.onPrimary) ,
-//        navigationIcon = {
-//            IconButton(onClick = {
-//                scope.launch {
-//                    scaffoldState.drawerState.open()
-//                }
-//            }) {
-//                Icon(
-//                    imageVector = Icons.Filled.Menu,
-//                    contentDescription = "Drawer Bottom"
-//                )
-//            }
-//        } ,
-//
-//        actions = {
-//            Icon(
-//                imageVector = Icons.Default.Home,
-//                tint = colorResource(id = R.color.onPrimary),
-//                contentDescription = "Home",
-//                modifier = Modifier
-//                    .size(35.dp)
-//                    .clickable {
-//                        context.startActivity(Intent(context , FirstPageActivity::class.java))
-//                    }
-//            )
-//        }
-//    )
-//}
+@Composable
+fun AppActionBar(
+    title: String
+){
+    val context = LocalContext.current
+    val density = LocalDensity.current
+    val configuration = LocalConfiguration.current
+    val halfWidth = configuration.screenWidthDp / 3
+    TopAppBar(
+        elevation = 1.dp,
+        title = {
+            Text(
+                text = title,
+                color = secondary,
+                style = MaterialTheme.typography.titleMedium,
+                fontSize = with(density){40.dp.toSp()},
+                modifier = Modifier
+                    .padding(start = halfWidth.dp)
+            )
+        } ,
+        backgroundColor =  primary,
+        contentColor = secondary ,
+
+        actions = {
+            Icon(
+                imageVector = Icons.Default.Home,
+                tint = secondary,
+                contentDescription = "Home",
+                modifier = Modifier
+                    .size(35.dp)
+                    .clickable {
+                        context.startActivity(Intent(context , MainActivity::class.java))
+                    }
+            )
+        }
+    )
+}

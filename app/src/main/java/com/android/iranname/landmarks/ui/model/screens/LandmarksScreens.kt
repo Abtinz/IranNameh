@@ -6,7 +6,7 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 
 sealed class LandmarksScreens(val route:String) {
     object MainMenu : LandmarksScreens(route = "home")
-    object LandmarksScreen:LandmarksScreens(route = "landmarks/page/{landmarks}"){
+    object LandmarksScreen:LandmarksScreens(route = "landmarks/page/{landmarkJson}"){
         fun passInfo(landmarks: LandmarksDC):String{
             val moshi = Moshi.Builder()
                 .add(KotlinJsonAdapterFactory())
