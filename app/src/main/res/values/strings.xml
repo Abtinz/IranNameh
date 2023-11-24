@@ -1,9 +1,12 @@
 <resources>
-    <string name="app_name">IranName</string>
-    <string name="title_activity_account">AccountActivity</string>
-    <string name="title_activity_history">HistoryActivity</string>
-    <string name="title_activity_landmarks">LandmarksActivity</string>
-    <string name="title_activity_litratuer">LitratuerActivity</string>
-    <string name="title_activity_traditions">TraditionsActivity</string>
-    <string name="title_activity_shop">ShopActivity</string>
+    <string name="app_name">ایران‌نامه</string>
+    <string name="title_activity_account">حساب کاربری</string>
+    <string name="title_activity_history">تاریخ </string>
+    <string name="title_activity_landmarks">بناهای تاریخی</string>
+    <string name="title_activity_litractuer">ادبیات فارسی</string>
+    <string name="title_activity_traditions">آداب و فرهنگ</string>
+    <string name="title_activity_shop">فروشگاه</string>
+    <string name="title_Setting">تنظیمات</string>
+    <string name="title_activity_setting">SettingActivity</string>
+    
 </resources>

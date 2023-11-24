@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.android.iranname">
 
-
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -15,37 +14,42 @@
         android:theme="@style/Theme.IranName"
         tools:targetApi="31">
         <activity
-            android:name="com.android.iranname.shops.ShopActivity"
+            android:name=".setting.SettingActivity"
+            android:exported="false"
+            android:label="@string/title_activity_setting"
+            android:theme="@style/Theme.IranName" />
+        <activity
+            android:name=".shops.ShopActivity"
             android:exported="false"
             android:label="@string/title_activity_shop"
             android:theme="@style/Theme.IranName" />
         <activity
-            android:name="com.android.iranname.traditions.TraditionsActivity"
+            android:name=".traditions.TraditionsActivity"
             android:exported="false"
             android:label="@string/title_activity_traditions"
             android:theme="@style/Theme.IranName" />
         <activity
-            android:name="com.android.iranname.litrature.LitratuerActivity"
+            android:name=".litrature.LitratuerActivity"
             android:exported="false"
             android:label="@string/title_activity_litratuer"
             android:theme="@style/Theme.IranName" />
         <activity
-            android:name="com.android.iranname.landmarks.LandmarksActivity"
+            android:name=".landmarks.LandmarksActivity"
             android:exported="false"
             android:label="@string/title_activity_landmarks"
             android:theme="@style/Theme.IranName" />
         <activity
-            android:name="com.android.iranname.history.HistoryActivity"
+            android:name=".history.HistoryActivity"
             android:exported="false"
             android:label="@string/title_activity_history"
             android:theme="@style/Theme.IranName" />
         <activity
-            android:name="com.android.iranname.account.AccountActivity"
+            android:name=".account.AccountActivity"
             android:exported="false"
             android:label="@string/title_activity_account"
             android:theme="@style/Theme.IranName" />
         <activity
-            android:name="com.android.iranname.mainmenu.ui.MainActivity"
+            android:name=".mainmenu.ui.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.IranName">

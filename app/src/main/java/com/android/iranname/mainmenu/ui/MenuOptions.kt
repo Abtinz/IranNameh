@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.Text
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
@@ -16,10 +17,8 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import coil.compose.rememberAsyncImagePainter
-import com.android.iranname.mainmenu.ui.theme.primary
-
+import com.android.iranname.mainmenu.ui.theme.secondary
 
 @Composable
 fun HomePageCategoriesCardView(title: String, image: String, modifier: Modifier,onClick:()->Unit) {
@@ -47,10 +46,11 @@ fun HomePageCategoriesCardView(title: String, image: String, modifier: Modifier,
 
         Text(
             text = title ,
-            fontSize = 18.sp,
+            fontSize = with(density){18.dp.toSp()},
+            style = MaterialTheme.typography.titleMedium,
             fontWeight = FontWeight.Light,
-            color = primary,
-            textAlign = TextAlign.Center ,
+            color = secondary,
+            textAlign = TextAlign.Center,
             modifier = Modifier
                 .fillMaxWidth()
         )
