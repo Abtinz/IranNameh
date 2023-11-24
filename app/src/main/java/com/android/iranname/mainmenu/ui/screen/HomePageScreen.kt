@@ -15,7 +15,7 @@ import com.android.iranname.R
 import com.android.iranname.commonServices.network.url.IconsURI
 import com.android.iranname.history.HistoryActivity
 import com.android.iranname.landmarks.LandmarksActivity
-import com.android.iranname.litrature.LitratuerActivity
+import com.android.iranname.literature.LiteratureActivity
 import com.android.iranname.mainmenu.ui.HomePageCategoriesCardView
 import com.android.iranname.mainmenu.ui.theme.tertiary
 import com.android.iranname.setting.SettingActivity
@@ -52,7 +52,7 @@ fun HomePageScreen() {
                         modifier = Modifier.weight(1f),
                     ){
                         context.startActivity(
-                            Intent(context, LitratuerActivity::class.java)
+                            Intent(context, LiteratureActivity::class.java)
                         )
                     }
                 }
