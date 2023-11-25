@@ -31,7 +31,7 @@
         <activity
             android:name=".literature.LiteratureActivity"
             android:exported="false"
-            android:label="@string/title_activity_litratuer"
+            android:label="@string/title_activity_literature"
             android:theme="@style/Theme.IranName" />
         <activity
             android:name=".landmarks.ui.activity.LandmarksActivity"
