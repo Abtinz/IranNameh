@@ -47,7 +47,7 @@ fun LiteraturePageScreen(navController: NavController) {
         stringResource(id = R.string.poet_ferdosi),
         stringResource(id = R.string.poet_sadi),
         stringResource(id = R.string.poet_haafez),
-        stringResource(id = R.string.poet_babaTaaher),
+        stringResource(id = R.string.poet_babataaher),
         stringResource(id = R.string.poet_ataar)
     )
     LazyColumn(
@@ -120,7 +120,7 @@ fun poetCard(poetName: String, navController: NavController) {
             ExpandableText(
                 originalText = context.resources.getString(stringResource),
                 style = TextStyle(
-                    textAlign = TextAlign.Right
+                    textAlign = TextAlign.End
                 ),
                 expandAction = "See More",
                 expandActionColor = primary,
