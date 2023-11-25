@@ -88,13 +88,6 @@ fun LandmarksCardView(landmarksDC: LandmarksDC,navController: NavController) {
             Row (
                 verticalAlignment = Alignment.CenterVertically
             ){
-                Icon(
-                    imageVector = Icons.Default.LocationOn,
-                    contentDescription = null,
-                    modifier = Modifier
-                        .padding(5.dp),
-                    tint = primary
-                )
 
                 Text(
                     text = landmarksDC.location,
@@ -105,6 +98,14 @@ fun LandmarksCardView(landmarksDC: LandmarksDC,navController: NavController) {
                     modifier = Modifier
                         .padding(10.dp)
                         .weight(1f)
+                )
+
+                Icon(
+                    imageVector = Icons.Default.LocationOn,
+                    contentDescription = null,
+                    modifier = Modifier
+                        .padding(5.dp),
+                    tint = primary
                 )
             }
 

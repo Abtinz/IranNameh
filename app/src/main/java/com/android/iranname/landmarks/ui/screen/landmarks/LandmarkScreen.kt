@@ -27,7 +27,6 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
 import com.android.iranname.commonServices.ui.compose.ImageSlider
 import com.android.iranname.landmarks.model.LandmarksDC
 import com.android.iranname.landmarks.ui.theme.informationText
@@ -35,7 +34,7 @@ import com.android.iranname.landmarks.ui.theme.primary
 import io.github.giangpham96.expandable_text_compose.ExpandableText
 
 @Composable
-fun LandmarkScreens(navController: NavController, landmarksDC: LandmarksDC) {
+fun LandmarkScreens(landmarksDC: LandmarksDC) {
 
     Column(
         modifier = Modifier

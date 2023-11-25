@@ -29,7 +29,7 @@ fun HomePageCategoriesCardView(title: String, image: String, modifier: Modifier,
     ){
 
         Card(
-            shape = RoundedCornerShape(0.dp),
+            shape = RoundedCornerShape(20.dp),
             elevation = 5.dp,
             modifier = Modifier
                 .size(200.dp)
@@ -41,8 +41,8 @@ fun HomePageCategoriesCardView(title: String, image: String, modifier: Modifier,
             Image(
                 painter = rememberAsyncImagePainter(model = image),
                 contentDescription = "" ,
+                modifier = Modifier.clip(RoundedCornerShape(20.dp)),
                 contentScale = ContentScale.FillBounds,
-                modifier = Modifier.clip(RoundedCornerShape(10.dp))
             )
         }
 

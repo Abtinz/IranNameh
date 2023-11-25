@@ -41,12 +41,10 @@ fun LandmarkNavGraph (navHostController: NavHostController){
                 .add(KotlinJsonAdapterFactory())
                 .build()
             val decodedInfo = URLDecoder.decode(filtersJson, "UTF-8")
-            println(decodedInfo)
             val jsonAdapter = moshi.adapter(LandmarksDC::class.java).lenient()
             val landmark = jsonAdapter.fromJson(decodedInfo!!)!!
             LandmarkScreens(
-                landmarksDC = landmark,
-                navController = navHostController
+                landmarksDC = landmark
             )
         }
     }
