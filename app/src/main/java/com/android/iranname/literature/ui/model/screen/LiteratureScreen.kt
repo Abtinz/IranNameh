@@ -15,9 +15,9 @@ sealed class LiteratureScreen(val route: String) {
         }
     }
 
-    object Poetry : LiteratureScreen(route = "$poetryScreenRoute/{poetryName}") {
+    object Poetry : LiteratureScreen(route = "$poetryScreenRoute/{poetryName}/{poetName}") {
         fun passInfo(poetryName: String, poetName: String): String {
-            return "$poetryScreenRoute/${poetryName}"
+            return "$poetryScreenRoute/${poetryName}/${poetName}"
         }
     }
 }
