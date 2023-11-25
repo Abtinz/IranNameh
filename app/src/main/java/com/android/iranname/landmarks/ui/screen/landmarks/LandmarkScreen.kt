@@ -60,13 +60,7 @@ fun LandmarkScreens(landmarksDC: LandmarksDC) {
         Row (
             verticalAlignment = Alignment.CenterVertically
         ){
-            Icon(
-                imageVector = Icons.Default.LocationOn,
-                contentDescription = null,
-                modifier = Modifier
-                    .padding(5.dp),
-                tint = primary
-            )
+
 
             Text(
                 text = landmarksDC.location,
@@ -77,6 +71,14 @@ fun LandmarkScreens(landmarksDC: LandmarksDC) {
                 modifier = Modifier
                     .padding(10.dp)
                     .weight(1f)
+            )
+
+            Icon(
+                imageVector = Icons.Default.LocationOn,
+                contentDescription = null,
+                modifier = Modifier
+                    .padding(5.dp),
+                tint = primary
             )
         }
 
@@ -101,5 +103,7 @@ fun LandmarkScreens(landmarksDC: LandmarksDC) {
                 .clickable { expand = !expand }
                 .padding(10.dp)
         )
+
+
     }
 }
