@@ -10,7 +10,7 @@ data class User(
 //    val email :String,
 //    var imageUri :String,
 //    val token :String,
-    val uuid :String,
+    val uuid :Int,
 //    val isGhost:Boolean?
 ): Serializable {
     @PrimaryKey(autoGenerate = true)
