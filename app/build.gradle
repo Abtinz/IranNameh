@@ -104,4 +104,6 @@ dependencies {
     //noinspection KaptUsageInsteadOfKsp
     kapt ("androidx.room:room-compiler:$room_version")
 
+    implementation (libs.logging.interceptor)
+
 }
