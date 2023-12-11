@@ -19,5 +19,6 @@ data class LandmarksDC(
     val location:String,
     val foundation:String,
     val comments:List<CommentDC>?,
-    val relatedLandmarksDC: List<LandmarksDC>?
+    val relatedLandmarksDC: List<LandmarksDC>?,
+    val landmark_id: Int
 )
