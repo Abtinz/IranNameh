@@ -14,17 +14,21 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
+import com.android.iranname.literature.ui.theme.Cream
+import com.android.iranname.literature.ui.theme.DarkBlur
+import com.android.iranname.literature.ui.theme.LightBlue
+import com.android.iranname.literature.ui.theme.SemiLightBlue
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+    primary = DarkBlur,
+    secondary = LightBlue,
+    tertiary = SemiLightBlue
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
+    primary = Cream,
+    secondary = DarkBlur,
+    tertiary = SemiLightBlue
 
     /* Other default colors to override
     background = Color(0xFFFFFBFE),
@@ -38,7 +42,7 @@ private val LightColorScheme = lightColorScheme(
 )
 
 @Composable
-fun IranNameTheme(
+fun AccountTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,
@@ -64,7 +68,7 @@ fun IranNameTheme(
 
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = Typography,
+        typography = com.android.iranname.literature.ui.theme.Typography,
         content = content
     )
 }
