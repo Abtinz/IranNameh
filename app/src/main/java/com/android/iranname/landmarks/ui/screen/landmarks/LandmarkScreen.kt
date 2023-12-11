@@ -1,5 +1,7 @@
 package com.android.iranname.landmarks.ui.screen.landmarks
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.animation.core.spring
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -28,11 +30,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.android.iranname.commonServices.ui.compose.ImageSlider
+import com.android.iranname.commonServices.ui.compose.comments.AddComment
+import com.android.iranname.commonServices.ui.compose.comments.CommentScreen
 import com.android.iranname.landmarks.model.LandmarksDC
 import com.android.iranname.landmarks.ui.theme.informationText
 import com.android.iranname.landmarks.ui.theme.primary
 import io.github.giangpham96.expandable_text_compose.ExpandableText
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun LandmarkScreens(landmarksDC: LandmarksDC) {
 
@@ -104,6 +109,7 @@ fun LandmarkScreens(landmarksDC: LandmarksDC) {
                 .padding(10.dp)
         )
 
-
+        CommentScreen(landmarksDC.landmark_id)
+        AddComment(landmark_id = landmarksDC.landmark_id)
     }
 }
