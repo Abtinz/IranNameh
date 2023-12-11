@@ -2,6 +2,7 @@ package com.android.iranname.commonServices.network
 
 import com.android.iranname.account.network.SignUpApiService
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
@@ -10,7 +11,12 @@ object RetrofitClient {
 
     private const val BASE_URL = "http://45.156.24.177/"
 
+    private val interceptor = HttpLoggingInterceptor().apply {
+        this.level = HttpLoggingInterceptor.Level.BODY
+    }
+
     private val client = OkHttpClient.Builder()
+        .addInterceptor(interceptor)
         .addInterceptor { chain ->
             val originalRequest = chain.request()
             val request = originalRequest
