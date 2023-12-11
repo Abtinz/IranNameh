@@ -1,5 +1,7 @@
 package com.android.iranname.landmarks.ui.model.navigation
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
@@ -15,6 +17,7 @@ import com.squareup.moshi.KotlinJsonAdapterFactory
 import com.squareup.moshi.Moshi
 import java.net.URLDecoder
 
+@RequiresApi(Build.VERSION_CODES.O)
 @ExperimentalMaterialApi
 @Composable
 fun LandmarkNavGraph (navHostController: NavHostController){
