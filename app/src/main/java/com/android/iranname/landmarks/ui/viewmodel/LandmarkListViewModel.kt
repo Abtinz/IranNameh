@@ -8,7 +8,7 @@ import com.android.iranname.landmarks.uitls.LandmarksImagesURI
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
-class LandmarkListViewModel():ViewModel() {
+class LandmarkListViewModel :ViewModel() {
 
     private val _landmarksList  = MutableStateFlow(emptyList<LandmarksDC>())
     val landmarksList: StateFlow<List<LandmarksDC>> get() = _landmarksList
@@ -17,7 +17,7 @@ class LandmarkListViewModel():ViewModel() {
     val loadStatus:StateFlow<String>  get() = _loadStatus
 
     fun landmarksProvider(context: Context){
-        _landmarksList.value = listOf<LandmarksDC>(
+        _landmarksList.value = listOf(
             LandmarksDC(
                 name = context.getString(R.string.chogazabil_title),
                 image = LandmarksImagesURI.Chogzanbil_First_URI,
@@ -31,7 +31,8 @@ class LandmarkListViewModel():ViewModel() {
                 foundation = context.getString(R.string.chogazabil_foundation),
                 description = context.getString(R.string.chogazabil_description),
                 comments = null,
-                relatedLandmarksDC = null
+                relatedLandmarksDC = null,
+                landmark_id = 1
             ),
 
             LandmarksDC(
@@ -47,7 +48,8 @@ class LandmarkListViewModel():ViewModel() {
                 foundation = context.getString(R.string.hegmataneh_foundation),
                 description = context.getString(R.string.hegmataneh_description),
                 comments = null,
-                relatedLandmarksDC = null
+                relatedLandmarksDC = null,
+                landmark_id = 2
             ),
 
             LandmarksDC(
@@ -61,7 +63,8 @@ class LandmarkListViewModel():ViewModel() {
                 foundation = context.getString(R.string.pasargad_foundation),
                 description = context.getString(R.string.pasargad_description),
                 comments = null,
-                relatedLandmarksDC = null
+                relatedLandmarksDC = null,
+                landmark_id = 3
             ),
 
             LandmarksDC(
@@ -77,7 +80,8 @@ class LandmarkListViewModel():ViewModel() {
                 foundation = context.getString(R.string.takhtJamshid_foundation),
                 description = context.getString(R.string.takhtJamshid_description),
                 comments = null,
-                relatedLandmarksDC = null
+                relatedLandmarksDC = null,
+                landmark_id = 4
             ),
 
             LandmarksDC(
@@ -93,7 +97,8 @@ class LandmarkListViewModel():ViewModel() {
                 foundation = context.getString(R.string.khajo_foundation),
                 description = context.getString(R.string.khajo_description),
                 comments = null,
-                relatedLandmarksDC = null
+                relatedLandmarksDC = null,
+                landmark_id = 5
             ),
 
             LandmarksDC(
@@ -109,7 +114,8 @@ class LandmarkListViewModel():ViewModel() {
                 foundation = context.getString(R.string.arg_foundation),
                 description = context.getString(R.string.arg_description),
                 comments = null,
-                relatedLandmarksDC = null
+                relatedLandmarksDC = null,
+                landmark_id = 6
             )
         )
 
