@@ -45,8 +45,8 @@ fun LandmarkScreens(landmarksDC: LandmarksDC) {
         modifier = Modifier
             .verticalScroll(rememberScrollState())
     ) {
-            Spacer(modifier = Modifier.padding(10.dp))
-            ImageSlider(images = landmarksDC.images)
+        Spacer(modifier = Modifier.padding(10.dp))
+        ImageSlider(images = landmarksDC.images)
 
 
         val density = LocalDensity.current
