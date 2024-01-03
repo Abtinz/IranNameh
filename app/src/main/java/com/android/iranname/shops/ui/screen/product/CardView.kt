@@ -65,7 +65,7 @@ fun ProductCardView(productsDC: ProductsDC , navController: NavController) {
                 contentDescription = null,
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
-                    .padding(bottom = 5.dp)
+                    .padding(10.dp)
                     .height(300.dp)
                     .fillMaxWidth()
             )
@@ -77,7 +77,7 @@ fun ProductCardView(productsDC: ProductsDC , navController: NavController) {
             ){
 
                 Text(
-                    text = productsDC.price.toString() + "Toman",
+                    text = productsDC.price.toString() + " T",
                     style = MaterialTheme.typography.displaySmall,
                     fontWeight = FontWeight.ExtraBold,
                     fontSize = with(density){16.dp.toSp()},

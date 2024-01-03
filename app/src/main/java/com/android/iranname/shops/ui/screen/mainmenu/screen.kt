@@ -1,5 +1,6 @@
 package com.android.iranname.shops.ui.screen.mainmenu
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
@@ -7,6 +8,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
@@ -15,6 +17,7 @@ import com.android.iranname.commonServices.ui.compose.error.network.NetworkIsGon
 import com.android.iranname.commonServices.ui.compose.error.server.SomethingWentWrongScreen
 import com.android.iranname.commonServices.ui.compose.reload.Reload
 import com.android.iranname.shops.ui.screen.product.ProductCardView
+import com.android.iranname.shops.ui.theme.mainBackGround
 import com.android.iranname.shops.viewmodel.mainmenu.ShopMainMenuVM
 
 @Composable
@@ -39,7 +42,10 @@ fun ShopMainMenuScreen(navController: NavHostController) {
         } else if(loadingState == "exception") {
             SomethingWentWrongScreen()
         } else {
-            LazyColumn{
+            LazyColumn(
+                modifier = Modifier
+                    .background(mainBackGround)
+            ){
                 items(productList){it ->
                     ProductCardView(
                         productsDC = it,

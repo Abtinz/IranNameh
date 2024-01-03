@@ -22,13 +22,13 @@ import com.android.iranname.shops.ui.theme.primary
 
 
 @Composable
-fun AppActionBar(
-    title: String
-){
+fun AppActionBar(title: String){
+
     val context = LocalContext.current
     val density = LocalDensity.current
     val configuration = LocalConfiguration.current
-    val halfWidth = configuration.screenWidthDp / 2
+    val halfWidth = configuration.screenWidthDp / 2.8
+
     TopAppBar(
         elevation = 1.dp,
         title = {
@@ -48,7 +48,7 @@ fun AppActionBar(
             Icon(
                 imageVector = Icons.Default.Home,
                 tint = Color(0xFF5D9C59),
-                contentDescription = "Home",
+                contentDescription = "shop",
                 modifier = Modifier
                     .size(35.dp)
                     .clickable {
