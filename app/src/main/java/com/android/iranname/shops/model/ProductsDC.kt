@@ -9,10 +9,10 @@ import java.io.Serializable
  */
 @Entity
 data class ProductsDC(
-    val name : String,
-    val image :String,
-    val description : String,
-    val price:Float
+    val name: String,
+    val image:String,
+    val description: String,
+    val price: Double
 ):Serializable{
     @PrimaryKey(autoGenerate = true)
     var id :Int = 0
