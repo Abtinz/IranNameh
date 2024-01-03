@@ -2,8 +2,8 @@ package com.android.iranname.shops.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val primary = Color(0xFFDAC0A3)
-val secondary = Color(0xFF102C57)
-val informationText = Color(0xFF1455B8)
-val tertiary = Color(0xFFF8F0E5)
-val mainBackGround = Color(0xFFEADBC8)
+val primary = Color(0xFF7D7463)
+val secondary = Color(0xFFFE0000)
+val informationText = Color(0xFF2E3840)
+val tertiary = Color(0xFFA8A196)
+val mainBackGround = Color(0xFFA8A196)

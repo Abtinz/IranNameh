@@ -77,13 +77,13 @@ fun ProductCardView(productsDC: ProductsDC , navController: NavController) {
             ){
 
                 Text(
-                    text = productsDC.price.toString(),
+                    text = productsDC.price.toString() + "Toman",
                     style = MaterialTheme.typography.displaySmall,
                     fontWeight = FontWeight.ExtraBold,
-                    fontSize = with(density){20.dp.toSp()},
-                    color = Color.Red,
+                    fontSize = with(density){16.dp.toSp()},
+                    color = Color(0xFF5D9C59),
                     modifier = Modifier
-                        .padding(10.dp)
+                        .padding(5.dp)
                         .weight(1f)
                 )
 
@@ -92,7 +92,7 @@ fun ProductCardView(productsDC: ProductsDC , navController: NavController) {
                     textAlign = TextAlign.Right,
                     style = MaterialTheme.typography.displaySmall,
                     fontWeight = FontWeight.Bold,
-                    fontSize = with(density){24.dp.toSp()},
+                    fontSize = with(density){20.dp.toSp()},
                     color = primary,
                     modifier = Modifier
                         .padding(10.dp)

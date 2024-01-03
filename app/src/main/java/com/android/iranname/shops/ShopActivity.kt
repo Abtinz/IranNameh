@@ -14,7 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.compose.rememberNavController
 import com.android.iranname.R
-import com.android.iranname.commonServices.ui.compose.actionbar.AppActionBar
+import com.android.iranname.shops.ui.model.actionbar.AppActionBar
 import com.android.iranname.shops.ui.model.navigation.ShopNavGraph
 import com.android.iranname.shops.ui.theme.ShopsTheme
 
