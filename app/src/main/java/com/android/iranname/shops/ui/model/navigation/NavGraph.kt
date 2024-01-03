@@ -11,6 +11,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.android.iranname.shops.model.ProductsDC
 import com.android.iranname.shops.ui.model.screens.ShopScreens
+import com.android.iranname.shops.ui.screen.mainmenu.ShopMainMenuScreen
+import com.android.iranname.shops.ui.screen.product.ShopProductScreen
 import com.squareup.moshi.KotlinJsonAdapterFactory
 import com.squareup.moshi.Moshi
 import java.net.URLDecoder
@@ -45,18 +47,11 @@ fun ShopNavGraph (navHostController: NavHostController){
             val jsonAdapter = moshi.adapter(ProductsDC::class.java).lenient()
             val product = jsonAdapter.fromJson(decodedInfo!!)!!
             ShopProductScreen(
-                product = product
+                product = product,
+                navHostController
             )
         }
     }
 }
 
-@Composable
-fun ShopMainMenuScreen(navController: NavHostController) {
 
-}
-
-@Composable
-fun ShopProductScreen(product: ProductsDC) {
-
-}
