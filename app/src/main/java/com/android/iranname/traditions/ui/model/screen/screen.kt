@@ -1,4 +1,4 @@
-package com.android.iranname.traditions.model.screen
+package com.android.iranname.traditions.ui.model.screen
 
 const val cityScreenRoute = "CITY"
 const val traditionScreenRoute = "TRADITION"

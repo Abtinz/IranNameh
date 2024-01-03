@@ -39,7 +39,7 @@ import com.android.iranname.R
 import com.android.iranname.landmarks.ui.theme.informationText
 import com.android.iranname.landmarks.uitls.LandmarksImagesURI
 import com.android.iranname.mainmenu.ui.theme.primary
-import com.android.iranname.traditions.model.screen.TraditionScreen
+import com.android.iranname.traditions.ui.model.screen.TraditionScreen
 import io.github.giangpham96.expandable_text_compose.ExpandableText
 
 @Composable
