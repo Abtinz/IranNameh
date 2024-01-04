@@ -34,31 +34,13 @@ import io.github.giangpham96.expandable_text_compose.ExpandableText
 @SuppressLint("DiscouragedApi")
 @Composable
 fun TraditionScreen(cityName: String) {
-//    val context = LocalContext.current
-//    val uri = when (cityName) {
-//        "همدان" -> "hamedan"
-//        else -> ""
-//    }
-//    val stringResource = context.resources.getIdentifier("${uri}_1", "string", context.packageName)
-//    val poetryList = listOf(
-//        context.resources.getString(stringResource),
-//    )
+
     LazyColumn(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         item {
-//            val imageResource =
-//                context.resources.getIdentifier("@drawable/$uri", null, context.packageName)
-//            val res = context.resources.getDrawable(imageResource, context.theme)
-//            Image(
-//                painter = rememberAsyncImagePainter(model = res),
-//                contentDescription = cityName,
-//                contentScale = ContentScale.Crop,
-//                modifier = Modifier
-//                    .height(130.dp)
-//                    .fillMaxWidth()
-//            )
+
             Text(
                 cityName + "\n",
                 color = MaterialTheme.colorScheme.secondary,
@@ -133,11 +115,6 @@ fun TraditionScreen(cityName: String) {
                     )
                 }
             }
-
-
         }
-//        items(poetryList) {
-//            poetryCard(cityName, it, navController)
-//        }
     }
 }

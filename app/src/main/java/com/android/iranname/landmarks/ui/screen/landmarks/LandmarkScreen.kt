@@ -1,7 +1,5 @@
 package com.android.iranname.landmarks.ui.screen.landmarks
 
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.compose.animation.core.spring
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -37,7 +35,6 @@ import com.android.iranname.landmarks.ui.theme.informationText
 import com.android.iranname.landmarks.ui.theme.primary
 import io.github.giangpham96.expandable_text_compose.ExpandableText
 
-@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun LandmarkScreens(landmarksDC: LandmarksDC) {
 
@@ -45,8 +42,8 @@ fun LandmarkScreens(landmarksDC: LandmarksDC) {
         modifier = Modifier
             .verticalScroll(rememberScrollState())
     ) {
-            Spacer(modifier = Modifier.padding(10.dp))
-            ImageSlider(images = landmarksDC.images)
+        Spacer(modifier = Modifier.padding(10.dp))
+        ImageSlider(images = landmarksDC.images)
 
 
         val density = LocalDensity.current
