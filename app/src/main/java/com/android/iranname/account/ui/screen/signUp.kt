@@ -54,7 +54,7 @@ fun SignUp(navHostController: NavHostController) {
     var email by remember { mutableStateOf("") }
 
     val singUpResponse by viewModel.singUpResponse.collectAsState()
-    val isUserSingedUp by viewModel.isUserSingedUp.collectAsState()
+//    val isUserSingedUp by viewModel.isUserSingedUp.collectAsState()
 
 
     // Event handlers
