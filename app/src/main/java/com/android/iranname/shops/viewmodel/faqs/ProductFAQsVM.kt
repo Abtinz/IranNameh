@@ -34,6 +34,7 @@ class ProductFAQsVM:ViewModel() {
                     _loadStatus.value = "success"
                 }
             }catch (exception : Exception){
+                exception.printStackTrace()
                 _loadStatus.value = "exception"
             }
         }
