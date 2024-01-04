@@ -1,5 +1,6 @@
 package com.android.iranname.shops.ui.screen.product
 
+import android.widget.Toast
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.animateFloatAsState
@@ -15,6 +16,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
@@ -25,6 +28,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -34,6 +38,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -41,7 +46,9 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
+import com.android.iranname.commonServices.ui.compose.reload.Reload
 import com.android.iranname.shops.model.ProductsDC
+import com.android.iranname.shops.ui.screen.product.faqs.FAQsCardView
 import com.android.iranname.shops.ui.theme.informationText
 import com.android.iranname.shops.ui.theme.primary
 import com.android.iranname.shops.viewmodel.faqs.ProductFAQsVM
@@ -57,7 +64,7 @@ fun ShopProductScreen(product: ProductsDC,navController: NavController){
         Card(
             modifier = Modifier
                 .padding(top = 10.dp, end = 10.dp, start = 10.dp)
-                .border(width = 5.dp , color = Color(0xFF5D9C59)),
+                .border(width = 5.dp, color = Color(0xFF5D9C59)),
             shape = RoundedCornerShape(15.dp),
             elevation = 5.dp
         ) {
@@ -120,6 +127,7 @@ fun ShopProductScreen(product: ProductsDC,navController: NavController){
                         durationMillis = 200
                     )
                 )
+
                 .clickable(
                     indication = null,
                     interactionSource = remember { MutableInteractionSource() }
@@ -157,17 +165,39 @@ fun ShopProductScreen(product: ProductsDC,navController: NavController){
                             .padding(5.dp)
                             .size(25.dp)
                     )
-
                 }
 
                 if (descriptionExpandedState) {
                     Text(
                         text = product.description,
                         modifier = Modifier
-                            .padding(5.dp) ,
+                            .padding(5.dp),
                         color = informationText,
                         textAlign = TextAlign.Right,
                         fontSize = with(density){18.dp.toSp()}
+                    )
+                }
+            }
+        }
+
+        val faqs by viewModel.faqs.collectAsState()
+        val loadingState by viewModel.loadStatus.collectAsState()
+
+        val context =  LocalContext.current
+        viewModel.loadProductsFaqs(
+            context = context,
+            productId = product.id
+        )
+
+        if(loadingState == "loading"){
+            Reload()
+        } else if(loadingState == "exception") {
+            Toast.makeText(context , "خطای دیتابیس داخلی", Toast.LENGTH_SHORT/10).show()
+        } else {
+            LazyRow{
+                items(faqs){it ->
+                    FAQsCardView(
+                        faq = it
                     )
                 }
             }
