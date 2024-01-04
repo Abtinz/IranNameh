@@ -8,7 +8,7 @@ import java.io.Serializable
 data class ProductFAQsDC(
     val question : String,
     val  answer :String,
-    val productId :String
+    val productId :Int
 ):Serializable{
     @PrimaryKey(autoGenerate = true)
     var id :Int = 0
