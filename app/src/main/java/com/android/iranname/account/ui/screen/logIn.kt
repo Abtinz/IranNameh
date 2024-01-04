@@ -1,5 +1,7 @@
 package com.android.iranname.account.ui.screen
 
+import android.annotation.SuppressLint
+import android.widget.Toast
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.PressInteraction
@@ -41,6 +43,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+@SuppressLint("ShowToast")
 @Composable
 fun LogIn(navController: NavController) {
     val viewModel: LogInViewModel = viewModel()
@@ -154,6 +157,8 @@ fun LogIn(navController: NavController) {
         ) {
             Text("LogIn")
         }
+        Toast.makeText(context, viewModel.logInState.value.toString(), Toast.LENGTH_SHORT).show()
+
 
         TextButton(onClick = { navController.navigate("SignUp") }) {
             Text(text = "Don't have an account? SignUp")

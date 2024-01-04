@@ -32,13 +32,19 @@ class SignUpViewModel : ViewModel() {
     suspend fun signUpApiService(username: String, email: String, password: String) {
         viewModelScope.launch {
             try {
-                val response = SignUpInstance.userSignUp(username = username, password1 = password, email = email, password2 = password)
+                val response = SignUpInstance.userSignUp(
+                    username = username,
+                    password1 = password,
+                    email = email,
+                    password2 = password
+                )
                 println(response)
-                _singUpResponse.value = response.success.toString()
+                _singUpResponse.value = response.message
+                _isUserSingedUp.value = response.success
                 //successful register request
-                if (_singUpResponse.value == "true") {
+                if (_isUserSingedUp.value!!) {
                     newUser = User(response.user_id)
-                    _isUserSingedUp.value = true
+                    _singUpResponse.value = "ok"
                 }
             } catch (exception: Throwable) {
                 _singUpResponse.value = exception.message

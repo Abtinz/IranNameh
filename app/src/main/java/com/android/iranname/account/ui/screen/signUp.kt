@@ -1,5 +1,6 @@
 package com.android.iranname.account.ui.screen
 
+import android.widget.Toast
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.PressInteraction
@@ -214,6 +215,7 @@ fun SignUp(navHostController: NavHostController) {
         ) {
             Text("Sign Up")
         }
+        Toast.makeText(context, viewModel.singUpResponse.value.toString(), Toast.LENGTH_SHORT).show()
 
         TextButton(onClick = { navHostController.navigate("logIn") }) {
             Text(text = "Already have an account? LogIn")
