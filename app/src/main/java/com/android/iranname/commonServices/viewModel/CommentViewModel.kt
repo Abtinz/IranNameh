@@ -6,9 +6,6 @@ import androidx.lifecycle.viewModelScope
 import com.android.iranname.commonServices.model.CommentDC
 import com.android.iranname.commonServices.network.RetrofitClient.retrofit
 import com.android.iranname.commonServices.network.url.CommentService
-import kotlinx.coroutines.DelicateCoroutinesApi
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class CommentViewModel : ViewModel() {
@@ -35,15 +32,14 @@ class CommentViewModel : ViewModel() {
         }
     }
 
-    @OptIn(DelicateCoroutinesApi::class)
-    fun addComment(comment: CommentDC, landmark_id: Int) {
-        GlobalScope.launch(Dispatchers.IO) {
+    fun addComment(comment: CommentDC) {
+        viewModelScope.launch {
             try {
                 val retrofitService = retrofit.create(CommentService::class.java)
 
                 addCommentState.value = retrofitService.postComment(comment).message
                 // Optionally, you can reload the comments after adding a new one
-                getComments(landmark_id)
+                getComments(comment.landmark_id)
             } catch (e: Exception) {
                 // Handle the error
                 errorState.value = e.message

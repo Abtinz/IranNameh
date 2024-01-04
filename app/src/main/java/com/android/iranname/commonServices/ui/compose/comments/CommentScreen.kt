@@ -1,7 +1,5 @@
 package com.android.iranname.commonServices.ui.compose.comments
 
-import android.os.Build
-import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
@@ -70,7 +68,6 @@ fun CommentItem(comment: CommentDC) {
     }
 }
 
-@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun AddComment(landmark_id: Int) {
     val context = LocalContext.current
@@ -108,8 +105,7 @@ fun AddComment(landmark_id: Int) {
                             text = newCommentState.value,
                             created_at = LocalDateTime.now()
                                 .format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))
-                        ),
-                        landmark_id
+                        )
                     )
 
                     // Clear the input field
@@ -136,8 +132,7 @@ fun AddComment(landmark_id: Int) {
                             )
                         }?.let {
                             commentViewModel.addComment(
-                                it,
-                                landmark_id
+                                it
                             )
                         }
                     }
