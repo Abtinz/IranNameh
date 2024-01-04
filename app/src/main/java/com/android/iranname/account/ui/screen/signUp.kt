@@ -19,17 +19,16 @@ import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Password
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
@@ -39,6 +38,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import com.android.iranname.account.db.UserDataBase
 import com.android.iranname.account.viewModel.SignUpViewModel
+import com.android.iranname.mainmenu.ui.model.homeScreenRoute
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -52,6 +52,9 @@ fun SignUp(navHostController: NavHostController) {
     var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
+
+    val singUpResponse by viewModel.singUpResponse.collectAsState()
+    val isUserSingedUp by viewModel.isUserSingedUp.collectAsState()
 
 
     // Event handlers
@@ -69,12 +72,9 @@ fun SignUp(navHostController: NavHostController) {
             CoroutineScope(Dispatchers.Default).launch {
                 println("hey")
                 viewModel.signUpApiService(username, email, password)
-                println(viewModel.newUser)
-                println(viewModel.singUpResponse)
-                println(viewModel.isUserSingedUp)
-                if (viewModel.singUpResponse.value == "true") {
+                if (singUpResponse == "Registration successful") {
                     viewModel.newUser?.let { UserDataBase(context).getUserDao().newUser(it) }
-                    println("hooy")
+                    println("hooey")
                     viewModel.isLoggedChecked()
                 }
             }
@@ -215,7 +215,11 @@ fun SignUp(navHostController: NavHostController) {
         ) {
             Text("Sign Up")
         }
-        Toast.makeText(context, viewModel.singUpResponse.value.toString(), Toast.LENGTH_SHORT).show()
+        println(singUpResponse + "hello")
+        if (singUpResponse == "Registration successful") {
+            Toast.makeText(context, "Signed up Successfully!", Toast.LENGTH_SHORT).show()
+            navHostController.navigate(homeScreenRoute)
+        }
 
         TextButton(onClick = { navHostController.navigate("logIn") }) {
             Text(text = "Already have an account? LogIn")
