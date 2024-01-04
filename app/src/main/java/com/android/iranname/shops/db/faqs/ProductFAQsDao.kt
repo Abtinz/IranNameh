@@ -13,7 +13,4 @@ interface ProductFAQsDao {
     @Query("SELECT * FROM productFAQsDC")
     suspend fun getAllFAQs(): List<ProductFAQsDC>
 
-    @Query("SELECT * FROM productFAQsDC WHERE productId = :productId")
-    fun getFAQsByProductId(productId: Int): List<ProductFAQsDC>
-
 }

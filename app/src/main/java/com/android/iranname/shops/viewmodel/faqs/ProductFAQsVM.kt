@@ -22,7 +22,7 @@ class ProductFAQsVM:ViewModel() {
         viewModelScope.launch {
             try {
                 val localFaqs = ProductFAQsDataBase(context).getProductFAQsDao()
-                    .getFAQsByProductId(productId = productId)
+                    .getAllFAQs()
 
                 if(localFaqs.isEmpty()){
                     buildLocalProductFAQs(
