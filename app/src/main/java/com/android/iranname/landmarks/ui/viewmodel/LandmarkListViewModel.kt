@@ -64,7 +64,7 @@ class LandmarkListViewModel :ViewModel() {
                 description = context.getString(R.string.pasargad_description),
                 comments = null,
                 relatedLandmarksDC = null,
-                landmark_id = 3
+                landmark_id = 4
             ),
 
             LandmarksDC(
@@ -81,7 +81,7 @@ class LandmarkListViewModel :ViewModel() {
                 description = context.getString(R.string.takhtJamshid_description),
                 comments = null,
                 relatedLandmarksDC = null,
-                landmark_id = 4
+                landmark_id = 5
             ),
 
             LandmarksDC(
@@ -98,7 +98,7 @@ class LandmarkListViewModel :ViewModel() {
                 description = context.getString(R.string.khajo_description),
                 comments = null,
                 relatedLandmarksDC = null,
-                landmark_id = 5
+                landmark_id = 3
             ),
 
             LandmarksDC(
