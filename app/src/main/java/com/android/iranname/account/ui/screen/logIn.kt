@@ -19,17 +19,16 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Password
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
@@ -39,6 +38,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.android.iranname.account.db.UserDataBase
 import com.android.iranname.account.viewModel.LogInViewModel
+import com.android.iranname.mainmenu.ui.model.homeScreenRoute
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -48,6 +48,8 @@ import kotlinx.coroutines.launch
 fun LogIn(navController: NavController) {
     val viewModel: LogInViewModel = viewModel()
     val context = LocalContext.current
+
+    val logInState by viewModel.logInState.collectAsState()
 
     var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -65,7 +67,7 @@ fun LogIn(navController: NavController) {
 
         CoroutineScope(Dispatchers.Default).launch {
             viewModel.logIn(username, password)
-            if (viewModel.logInState.value != null) {
+            if (logInState) {
                 viewModel.newUser?.let { UserDataBase(context).getUserDao().newUser(it) }
             }
         }
@@ -157,7 +159,11 @@ fun LogIn(navController: NavController) {
         ) {
             Text("LogIn")
         }
-        Toast.makeText(context, viewModel.logInState.value.toString(), Toast.LENGTH_SHORT).show()
+        println(logInState)
+        if (logInState){
+            Toast.makeText(context, "Logged in Successfully!", Toast.LENGTH_SHORT).show()
+            navController.navigate(homeScreenRoute)
+        }
 
 
         TextButton(onClick = { navController.navigate("SignUp") }) {
