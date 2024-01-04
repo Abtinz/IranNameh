@@ -38,7 +38,7 @@ fun HomePageSetUp() {
     Scaffold(
         scaffoldState = scaffoldState,
         topBar = {
-            HomeActionBar(navController)
+            HomeActionBar()
         },
     ) { padding ->
         Box(
