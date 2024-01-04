@@ -20,17 +20,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.android.iranname.R
 import com.android.iranname.account.AccountActivity
-import com.android.iranname.account.db.UserDataBase
 import com.android.iranname.mainmenu.ui.MainActivity
 import com.android.iranname.mainmenu.ui.theme.primary
 import com.android.iranname.mainmenu.ui.theme.secondary
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 
 @Composable
-fun HomeActionBar(){
+fun HomeActionBar() {
     val context = LocalContext.current
     val density = LocalDensity.current
     val configuration = LocalConfiguration.current
@@ -38,17 +34,17 @@ fun HomeActionBar(){
     TopAppBar(
         elevation = 1.dp,
         title = {
-                Text(
-                    text = stringResource(id = R.string.app_name),
-                    color = secondary,
-                    style = MaterialTheme.typography.titleMedium,
-                    fontSize = with(density){40.dp.toSp()},
-                    modifier = Modifier
-                        .padding(start = halfWidth.dp)
-                )
-        } ,
-        backgroundColor =  primary,
-        contentColor = secondary ,
+            Text(
+                text = stringResource(id = R.string.app_name),
+                color = secondary,
+                style = MaterialTheme.typography.titleMedium,
+                fontSize = with(density) { 40.dp.toSp() },
+                modifier = Modifier
+                    .padding(start = halfWidth.dp)
+            )
+        },
+        backgroundColor = primary,
+        contentColor = secondary,
 
         actions = {
             Icon(
@@ -58,13 +54,8 @@ fun HomeActionBar(){
                 modifier = Modifier
                     .size(35.dp)
                     .clickable {
-                        CoroutineScope(Dispatchers.Default).launch {
-                            try {
-                                UserDataBase(context).getUserDao().getFirstUser()
-                            }catch (e:Exception){
-                                context.startActivity(Intent(context, AccountActivity::class.java))
-                            }
-                        }
+
+                        context.startActivity(Intent(context, AccountActivity::class.java))
                     }
             )
         }
@@ -74,7 +65,7 @@ fun HomeActionBar(){
 @Composable
 fun AppActionBar(
     title: String
-){
+) {
     val context = LocalContext.current
     val density = LocalDensity.current
     val configuration = LocalConfiguration.current
@@ -86,13 +77,13 @@ fun AppActionBar(
                 text = title,
                 color = secondary,
                 style = MaterialTheme.typography.titleMedium,
-                fontSize = with(density){25.dp.toSp()},
+                fontSize = with(density) { 25.dp.toSp() },
                 modifier = Modifier
                     .padding(start = halfWidth.dp)
             )
-        } ,
-        backgroundColor =  primary,
-        contentColor = secondary ,
+        },
+        backgroundColor = primary,
+        contentColor = secondary,
 
         actions = {
             Icon(
