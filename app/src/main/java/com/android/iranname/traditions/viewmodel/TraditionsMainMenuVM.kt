@@ -50,6 +50,42 @@ class TraditionsMainMenuVM:ViewModel() {
                         provinceDescription= "",
                         cutomsDescription= "",
                         traditionsDescription= ""
+                    ),
+                    CityTraditionsDC(
+                        name = "همدان",
+                        provinceImage = "",
+                        localCustomsImage = "",
+                        traditionsImage = "",
+                        secondTraditionsImage = "",
+                        thirdTraditionsImage = "",
+                        fourthTraditionsImage = "",
+                        provinceDescription= "",
+                        cutomsDescription= "",
+                        traditionsDescription= ""
+                    ),
+                    CityTraditionsDC(
+                        name = "همدان",
+                        provinceImage = "",
+                        localCustomsImage = "",
+                        traditionsImage = "",
+                        secondTraditionsImage = "",
+                        thirdTraditionsImage = "",
+                        fourthTraditionsImage = "",
+                        provinceDescription= "",
+                        cutomsDescription= "",
+                        traditionsDescription= ""
+                    ),
+                    CityTraditionsDC(
+                        name = "همدان",
+                        provinceImage = "",
+                        localCustomsImage = "",
+                        traditionsImage = "",
+                        secondTraditionsImage = "",
+                        thirdTraditionsImage = "",
+                        fourthTraditionsImage = "",
+                        provinceDescription= "",
+                        cutomsDescription= "",
+                        traditionsDescription= ""
                     )
                 )
 
