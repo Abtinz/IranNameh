@@ -6,7 +6,7 @@ import java.io.Serializable
 
 @Entity
 data class User(
-//    val username :String,
+    val user_id :String,
 //    val email :String,
 //    var imageUri :String,
 //    val token :String,
