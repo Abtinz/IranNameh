@@ -5,7 +5,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
@@ -13,19 +12,20 @@ import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.navigation.compose.rememberNavController
 import com.android.iranname.R
 import com.android.iranname.account.AccountActivity
+import com.android.iranname.account.db.UserDataBase
 import com.android.iranname.mainmenu.ui.MainActivity
 import com.android.iranname.mainmenu.ui.theme.primary
 import com.android.iranname.mainmenu.ui.theme.secondary
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
@@ -58,7 +58,13 @@ fun HomeActionBar(){
                 modifier = Modifier
                     .size(35.dp)
                     .clickable {
-                        context.startActivity(Intent(context, AccountActivity::class.java))
+                        CoroutineScope(Dispatchers.Default).launch {
+                            try {
+                                UserDataBase(context).getUserDao().getFirstUser()
+                            }catch (e:Exception){
+                                context.startActivity(Intent(context, AccountActivity::class.java))
+                            }
+                        }
                     }
             )
         }
