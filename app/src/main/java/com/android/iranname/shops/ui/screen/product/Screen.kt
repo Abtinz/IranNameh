@@ -44,7 +44,6 @@ import coil.compose.rememberAsyncImagePainter
 import com.android.iranname.shops.model.ProductsDC
 import com.android.iranname.shops.ui.theme.informationText
 import com.android.iranname.shops.ui.theme.primary
-import com.android.iranname.shops.ui.theme.secondary
 import com.android.iranname.shops.viewmodel.faqs.ProductFAQsVM
 
 @Composable
@@ -58,7 +57,7 @@ fun ShopProductScreen(product: ProductsDC,navController: NavController){
         Card(
             modifier = Modifier
                 .padding(top = 10.dp, end = 10.dp, start = 10.dp)
-                .border(width = 5.dp , color = secondary),
+                .border(width = 5.dp , color = Color(0xFF5D9C59)),
             shape = RoundedCornerShape(15.dp),
             elevation = 5.dp
         ) {
@@ -144,7 +143,7 @@ fun ShopProductScreen(product: ProductsDC,navController: NavController){
                         modifier = Modifier
                             .padding(5.dp)
                             .weight(1f),
-                        color = informationText,
+                        color = primary,
                         textAlign = TextAlign.Right,
                         fontSize = with(density){18.dp.toSp()}
                     )
@@ -152,7 +151,7 @@ fun ShopProductScreen(product: ProductsDC,navController: NavController){
                     Icon(
                         imageVector = Icons.Default.ArrowDropDown,
                         contentDescription = "ArrowDropDown",
-                        tint = informationText,
+                        tint = primary,
                         modifier = Modifier
                             .rotate(rotationState)
                             .padding(5.dp)
@@ -173,9 +172,5 @@ fun ShopProductScreen(product: ProductsDC,navController: NavController){
                 }
             }
         }
-
-
-
     }
 }
-
