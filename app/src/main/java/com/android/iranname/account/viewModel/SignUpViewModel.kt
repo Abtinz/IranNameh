@@ -1,30 +1,23 @@
 package com.android.iranname.account.viewModel
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.android.iranname.account.db.User
 import com.android.iranname.commonServices.network.RetrofitClient.SignUpInstance
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class SignUpViewModel : ViewModel() {
 
-    private val _singUpResponse = MutableLiveData<String>()
-    val singUpResponse: LiveData<String>
-        get() = _singUpResponse
+    private val _singUpResponse = MutableStateFlow("")
+    val singUpResponse: StateFlow<String> get() = _singUpResponse
 
-    private val _isUserSingedUp = MutableLiveData<Boolean>()
-    val isUserSingedUp: LiveData<Boolean>
-        get() = _isUserSingedUp
+    private val _isUserSingedUp = MutableStateFlow(false)
+    val isUserSingedUp: StateFlow<Boolean> get() = _isUserSingedUp
 
     //this is our user information object
     var newUser: User? = null
-
-    init {
-        _singUpResponse.value = "initial"
-        _isUserSingedUp.value = false
-    }
 
     /*
      * this is our service for register api request and its response handling
@@ -39,15 +32,14 @@ class SignUpViewModel : ViewModel() {
                     password2 = password
                 )
                 println(response)
-                _singUpResponse.value = response.message
+                _singUpResponse.value = response.message.toString()
                 _isUserSingedUp.value = response.success
                 //successful register request
-                if (_isUserSingedUp.value!!) {
-                    newUser = User(response.user_id)
-                    _singUpResponse.value = "ok"
+                if (response.success) {
+                    newUser = User(username, response.user_id)
                 }
             } catch (exception: Throwable) {
-                _singUpResponse.value = exception.message
+                _singUpResponse.value = exception.message.toString()
             }
         }
     }
