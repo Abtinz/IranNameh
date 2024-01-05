@@ -229,7 +229,7 @@ fun ShopProductScreen(product: ProductsDC,navController: NavController){
                         productsDC = product
                     )
                 }else{
-                    Toast.makeText(context,"ین محصول قبلا به سبد خرید شما افزوده شده",Toast.LENGTH_SHORT/10).show()
+                    Toast.makeText(context,"این محصول قبلا به سبد خرید شما افزوده شده",Toast.LENGTH_SHORT/10).show()
                 }
 
             },
@@ -271,22 +271,24 @@ fun ShopProductScreen(product: ProductsDC,navController: NavController){
                         Reload()
                     }
                 }else if(addToBasketStatus.value == "success"){
-                    Icon(
-                        Icons.Default.Done,
-                        modifier = Modifier
-                            .size(30.dp),
-                        contentDescription = "",
-                        tint = Color.White
-                    )
+                    Row {
+                        Icon(
+                            Icons.Default.Done,
+                            modifier = Modifier
+                                .size(30.dp),
+                            contentDescription = "",
+                            tint = Color.White
+                        )
 
-                    Text(
-                        text = "محصول مورد نظر به سبد شما افزوده شد",
-                        modifier = Modifier
-                            .padding(5.dp),
-                        color = Color.White,
-                        textAlign = TextAlign.Right,
-                        fontSize = with(density){18.dp.toSp()}
-                    )
+                        Text(
+                            text = "محصول مورد نظر به سبد شما افزوده شد",
+                            modifier = Modifier
+                                .padding(5.dp),
+                            color = Color.White,
+                            textAlign = TextAlign.Right,
+                            fontSize = with(density){18.dp.toSp()}
+                        )
+                    }
                 }else{
                     Text(
                         text = "مشکلی پیش آمده لطفا دوباره امتحان کنید",
