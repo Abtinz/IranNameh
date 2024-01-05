@@ -18,7 +18,7 @@ class ShopBasketVM:ViewModel() {
     private val _loadStatus  = MutableStateFlow("loading")
     val loadStatus: StateFlow<String> get() = _loadStatus
 
-    private val _addToBasketStatus  = MutableStateFlow("loading")
+    private val _addToBasketStatus  = MutableStateFlow("")
     val addToBasketStatus: StateFlow<String> get() = _addToBasketStatus
 
     private val _removeFromBasketStatus  = MutableStateFlow("loading")
@@ -55,6 +55,7 @@ class ShopBasketVM:ViewModel() {
     fun removeFromBasket(context:Context,basketProductDC: BasketProductDC){
         viewModelScope.launch {
             try {
+                _addToBasketStatus.value = "loading"
                 BasketProductDataBase(context).getBasketProductDao().deleteProduct(basketProductDC)
                 _removeFromBasketStatus.value = "success"
             }catch (exception : Exception){

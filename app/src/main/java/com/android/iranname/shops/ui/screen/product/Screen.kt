@@ -6,10 +6,13 @@ import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -21,11 +24,15 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Card
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowDropDown
+import androidx.compose.material.icons.filled.Done
+import androidx.compose.material.icons.filled.ShoppingBasket
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -36,6 +43,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -46,6 +54,7 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
+import com.android.iranname.account.viewModel.basket.ShopBasketVM
 import com.android.iranname.commonServices.ui.compose.reload.Reload
 import com.android.iranname.shops.model.ProductsDC
 import com.android.iranname.shops.ui.screen.product.faqs.FAQsCardView
@@ -60,6 +69,7 @@ fun ShopProductScreen(product: ProductsDC,navController: NavController){
     )  {
 
         val viewModel = viewModel(ProductFAQsVM::class.java)
+        val context = LocalContext.current
 
         Card(
             modifier = Modifier
@@ -183,7 +193,6 @@ fun ShopProductScreen(product: ProductsDC,navController: NavController){
         val faqs by viewModel.faqs.collectAsState()
         val loadingState by viewModel.loadStatus.collectAsState()
 
-        val context =  LocalContext.current
         viewModel.loadProductsFaqs(
             context = context,
             productId = product.id
@@ -202,5 +211,96 @@ fun ShopProductScreen(product: ProductsDC,navController: NavController){
                 }
             }
         }
+
+        val basketViewModel = viewModel(ShopBasketVM::class.java)
+        val addToBasketStatus = basketViewModel.addToBasketStatus.collectAsState()
+        val gradient = Brush.horizontalGradient(listOf(Color(0xFF28D8A3), Color(0xFF00BEB2)))
+        val modifier = Modifier
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp, vertical = 8.dp)
+        Button(
+            modifier = modifier,
+            colors = ButtonDefaults.buttonColors(backgroundColor = Color.Transparent),
+            contentPadding = PaddingValues(),
+            onClick = {
+                if (addToBasketStatus.value != "success"){
+                    basketViewModel.addToBasket(
+                        context = context,
+                        productsDC = product
+                    )
+                }else{
+                    Toast.makeText(context,"ین محصول قبلا به سبد خرید شما افزوده شده",Toast.LENGTH_SHORT/10).show()
+                }
+
+            },
+        ) {
+            Box(
+                modifier = Modifier
+                    .background(gradient)
+                    .then(modifier),
+                contentAlignment = Alignment.Center,
+            ) {
+                if(addToBasketStatus.value == ""){
+                    Row {
+
+                        Icon(
+                            Icons.Default.ShoppingBasket,
+                            modifier = Modifier
+                                .size(30.dp),
+                            contentDescription = "",
+                            tint = Color.White
+                        )
+
+                        Text(
+                            text = "افزودن به سبد خرید",
+                            modifier = Modifier
+                                .padding(5.dp),
+                            color = Color.White,
+                            textAlign = TextAlign.Right,
+                            fontSize = with(density){18.dp.toSp()}
+                        )
+
+                    }
+                }else if(addToBasketStatus.value == "loading"){
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .size(30.dp),
+                        contentAlignment = Alignment.Center
+                    ){
+                        Reload()
+                    }
+                }else if(addToBasketStatus.value == "success"){
+                    Icon(
+                        Icons.Default.Done,
+                        modifier = Modifier
+                            .size(30.dp),
+                        contentDescription = "",
+                        tint = Color.White
+                    )
+
+                    Text(
+                        text = "محصول مورد نظر به سبد شما افزوده شد",
+                        modifier = Modifier
+                            .padding(5.dp),
+                        color = Color.White,
+                        textAlign = TextAlign.Right,
+                        fontSize = with(density){18.dp.toSp()}
+                    )
+                }else{
+                    Text(
+                        text = "مشکلی پیش آمده لطفا دوباره امتحان کنید",
+                        modifier = Modifier
+                            .padding(5.dp),
+                        color = Color.White,
+                        textAlign = TextAlign.Right,
+                        fontSize = with(density){18.dp.toSp()}
+                    )
+                }
+            }
+        }
+
     }
+
+
 }
