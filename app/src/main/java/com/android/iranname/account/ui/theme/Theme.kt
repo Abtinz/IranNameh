@@ -14,21 +14,17 @@ import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
-import com.android.iranname.literature.ui.theme.Cream
-import com.android.iranname.literature.ui.theme.DarkBlur
-import com.android.iranname.literature.ui.theme.LightBlue
-import com.android.iranname.literature.ui.theme.SemiLightBlue
 
 private val DarkColorScheme = darkColorScheme(
-    primary = DarkBlur,
-    secondary = LightBlue,
-    tertiary = SemiLightBlue
+    primary = DarkGreen,
+    secondary = LightGreen,
+    tertiary = SemiDarkGreen
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Cream,
-    secondary = DarkBlur,
-    tertiary = SemiLightBlue
+    primary = GrayGreen,
+    secondary = DarkGreen,
+    tertiary = LightGreen
 
     /* Other default colors to override
     background = Color(0xFFFFFBFE),
