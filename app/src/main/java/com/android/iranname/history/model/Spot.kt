@@ -4,3 +4,4 @@ data class History(
      val dynasityName: String,
      val description: String
 )
+
