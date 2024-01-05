@@ -1,9 +1,9 @@
 package com.android.iranname.history
 
-
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -18,16 +18,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.android.iranname.R
-import com.android.iranname.commonServices.ui.compose.actionbar.AppActionBar
 import com.android.iranname.history.model.History
-import com.android.iranname.history.ui.theme.IranNameTheme
+import com.android.iranname.history.ui.model.actionbar.AppActionBar
+import com.android.iranname.history.ui.theme.HistoryTheme
+import com.android.iranname.history.ui.theme.mainBackGround
 
 class HistoryActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterialApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            IranNameTheme {
+            HistoryTheme {
                 HistoryPageSetUp()
                 // A surface container using the 'background' color from the theme
 //                Surface(
@@ -83,7 +84,10 @@ fun HistoryPageSetUp() {
 
 @Composable
 fun HistoryList(spots: List<History>, modifier: Modifier = Modifier) {
-    LazyColumn(modifier = modifier){
+    LazyColumn(
+        modifier = Modifier
+            .background(color = mainBackGround)
+    ){
         items(spots){spot ->
             HistoryCard(
                 spot = spot,
