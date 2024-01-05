@@ -37,15 +37,12 @@ import com.android.iranname.history.ui.theme.tertiary
 @Composable
 fun HistoryCard(spot: History, modifier: Modifier = Modifier) {
     val context = LocalContext.current
-    val context2 = LocalContext.current
     var isCardClicked by remember { mutableStateOf(false) }
 
     Card(
         modifier = Modifier
-            .background(tertiary)
             .padding(10.dp)
             .border(color = secondary , width = 2.dp)
-            .padding(10.dp)
             .clickable { isCardClicked = !isCardClicked } // Toggle isCardClicked on click
     ) {
         Column(

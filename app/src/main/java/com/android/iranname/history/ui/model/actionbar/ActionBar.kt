@@ -26,7 +26,7 @@ fun AppActionBar(title: String){
     val context = LocalContext.current
     val density = LocalDensity.current
     val configuration = LocalConfiguration.current
-    val halfWidth = configuration.screenWidthDp / 2.7
+    val halfWidth = configuration.screenWidthDp / 2.5
 
     TopAppBar(
         elevation = 1.dp,

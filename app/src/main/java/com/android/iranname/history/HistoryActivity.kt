@@ -30,19 +30,6 @@ class HistoryActivity : ComponentActivity() {
         setContent {
             HistoryTheme {
                 HistoryPageSetUp()
-                // A surface container using the 'background' color from the theme
-//                Surface(
-//                    modifier = Modifier.fillMaxSize(),
-//                    color = MaterialTheme.colorScheme.background
-//                ) {
-//                    HistoryList(spots = listOf<History>(
-//                        HistoryItems.pahlavi,
-//                        HistoryItems.ghajarian,
-//                        HistoryItems.afsharian,
-//                        HistoryItems.zandian,
-//                        HistoryItems.safavian
-//                    ))
-//                }
             }
         }
     }
@@ -62,6 +49,7 @@ fun HistoryPageSetUp() {
         Box(
             modifier = Modifier
                 .padding(padding)
+                .background(mainBackGround)
         ) {
 //            LandmarkNavGraph(navHostController = navController )
             HistoryList(spots = listOf<History>(
@@ -83,7 +71,7 @@ fun HistoryPageSetUp() {
 }
 
 @Composable
-fun HistoryList(spots: List<History>, modifier: Modifier = Modifier) {
+fun HistoryList(spots: List<History>) {
     LazyColumn(
         modifier = Modifier
             .background(color = mainBackGround)
