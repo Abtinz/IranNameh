@@ -47,7 +47,7 @@ fun AccountNavGraph(navHostController: NavHostController) {
         }
 
         composable(route = "account") {
-            AccountPageScreen(user)
+            AccountPageScreen(user, navHostController)
         }
     }
 }
