@@ -1,8 +1,6 @@
-package com.android.iranname.commonServices.ui.compose.comments
+package com.android.iranname.literature.comment
 
 import android.widget.Toast
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -36,21 +34,18 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.android.iranname.account.viewModel.LogInViewModel
-import com.android.iranname.commonServices.model.CommentDC
-import com.android.iranname.commonServices.viewModel.CommentViewModel
 import com.android.iranname.landmarks.ui.theme.informationText
 import com.android.iranname.landmarks.ui.theme.primary
 import com.android.iranname.landmarks.ui.theme.secondary
 import com.android.iranname.landmarks.ui.theme.tertiary
-import com.android.iranname.literature.ui.theme.DarkBlur
 import com.android.iranname.literature.ui.theme.LightBlue
-import com.android.iranname.literature.ui.theme.Pink40
+
 
 @Composable
-fun CommentScreen(landmark_id: Int) {
+fun LitCommentScreen(literature_id: Int) {
     val context = LocalContext.current
-    val viewModel : CommentViewModel = viewModel()
-    viewModel.fetchComments(landmark_id, context)
+    val viewModel : LitCommentViewModel = viewModel()
+    viewModel.fetchComments(literature_id, context)
 
     val comments by viewModel.commentsState.collectAsState()
     val comments2 by viewModel.commentsState2.collectAsState()
@@ -61,7 +56,7 @@ fun CommentScreen(landmark_id: Int) {
             fontSize = 20.sp,
             fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(5.dp),
-            color = informationText
+            color = primary
         )
         if (comments.isNotEmpty()) {
             comments.forEach { comment ->
@@ -76,7 +71,7 @@ fun CommentScreen(landmark_id: Int) {
 }
 
 @Composable
-fun CommentItem(comment: CommentDC) {
+fun CommentItem(comment: LitComment) {
     val context = LocalContext.current
     val viewModel: LogInViewModel = viewModel()
     viewModel.loadUser(context)
@@ -106,9 +101,9 @@ fun CommentItem(comment: CommentDC) {
 }
 
 @Composable
-fun AddComment(landmark_id: Int) {
+fun AddComment(literature_id: Int) {
     val context = LocalContext.current
-    val viewModel : CommentViewModel = viewModel()
+    val viewModel : LitCommentViewModel = viewModel()
 
     val addCommentState by viewModel.addCommentState.collectAsState()
     if (addCommentState == "Comment saved"){
@@ -137,7 +132,7 @@ fun AddComment(landmark_id: Int) {
                 if (newCommentState.value.isNotEmpty()) {
                     // Post the new comment
                     viewModel.addComment(
-                        landmark_id = landmark_id,
+                        literature_id = literature_id,
                         text = newCommentState.value,
                         context = context
                     )
@@ -162,7 +157,7 @@ fun AddComment(landmark_id: Int) {
                     // Post the new comment
 
                     viewModel.addComment(
-                        landmark_id = landmark_id,
+                        literature_id = literature_id,
                         text = newCommentState.value,
                         context = context
                     )

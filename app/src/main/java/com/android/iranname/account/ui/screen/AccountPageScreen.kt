@@ -85,16 +85,24 @@ fun AccountPageScreen(user: User?, navHostController: NavHostController) {
 
                             Spacer(modifier = Modifier.height(16.dp))
 
-                            if (user != null) {
+                            user?.user_id?.let {
                                 Text(
-                                    text = user.user_id,
-                                    style = MaterialTheme.typography.bodyMedium,
+                                    text = it,
+                                    style = MaterialTheme.typography.bodyLarge,
                                     fontWeight = FontWeight.Bold,
                                     modifier = Modifier.align(Alignment.CenterHorizontally)
                                 )
                             }
 
                             val removeProduct = remember { mutableStateOf(false) }
+                            Spacer(modifier = Modifier.height(16.dp))
+                            Spacer(modifier = Modifier.height(16.dp))
+                            Text(
+                                text = "Shop Basket",
+                                style = MaterialTheme.typography.titleMedium,
+                                fontWeight = FontWeight.Bold,
+                                modifier = Modifier.align(Alignment.CenterHorizontally)
+                            )
                             basket.forEach {
                                 it.let {
                                     if (removeProduct.value) {
@@ -112,7 +120,9 @@ fun AccountPageScreen(user: User?, navHostController: NavHostController) {
                                         }
                                         removeProduct.value = false
                                     }
-                                    Box {
+                                    Box(
+                                        modifier = Modifier.padding(5.dp)
+                                    ) {
                                         ProductCardView(
                                             ProductsDC(
                                                 it.name,

@@ -1,16 +1,16 @@
-package com.android.iranname.commonServices.model
+package com.android.iranname.literature.comment
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.io.Serializable
 
 @Entity
-data class CommentDC(
+data class LitComment(
     val user_id: Int,
-    val landmark_id: Int,
-    val text:String,
+    val literature_id: Int,
+    val text: String,
     val created_at: String
-): Serializable {
+) : Serializable {
     @PrimaryKey(autoGenerate = true)
-    var id :Int = 0
+    var id: Int = 0
 }
