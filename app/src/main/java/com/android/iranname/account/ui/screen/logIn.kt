@@ -36,18 +36,19 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.android.iranname.account.db.UserDataBase
 import com.android.iranname.account.viewModel.LogInViewModel
-import com.android.iranname.mainmenu.ui.model.homeScreenRoute
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 @SuppressLint("ShowToast")
 @Composable
 fun LogIn(navController: NavController) {
-    val viewModel: LogInViewModel = viewModel()
     val context = LocalContext.current
+
+    val viewModel: LogInViewModel = viewModel()
+    viewModel.loadUser(context)
+    val loadedUser by viewModel.loadedUser.collectAsState()
+    if (loadedUser != null){
+        navController.navigate("account")
+    }
 
     val logInState by viewModel.logInState.collectAsState()
 
@@ -65,12 +66,7 @@ fun LogIn(navController: NavController) {
 
     val onSignUpClicked: () -> Unit = {
 
-        CoroutineScope(Dispatchers.Default).launch {
-            viewModel.logIn(username, password)
-            if (logInState) {
-                viewModel.newUser?.let { UserDataBase(context).getUserDao().newUser(it) }
-            }
-        }
+        viewModel.logIn(username, password, context)
     }
 
     // Observe viewModel.singUpResponse and handle UI accordingly
@@ -159,10 +155,9 @@ fun LogIn(navController: NavController) {
         ) {
             Text("LogIn")
         }
-        println(logInState)
-        if (logInState){
+        if (logInState == "Login successful") {
             Toast.makeText(context, "Logged in Successfully!", Toast.LENGTH_SHORT).show()
-            navController.navigate(homeScreenRoute)
+            navController.navigate("account")
         }
 
 
