@@ -46,6 +46,7 @@ class ShopBasketVM:ViewModel() {
                 )
                 BasketProductDataBase(context).getBasketProductDao().newProduct(product)
                 _addToBasketStatus.value = "success"
+                loadBasket(context)
             }catch (exception : Exception){
                 _addToBasketStatus.value = "exception"
             }
@@ -58,6 +59,7 @@ class ShopBasketVM:ViewModel() {
                 _addToBasketStatus.value = "loading"
                 BasketProductDataBase(context).getBasketProductDao().deleteProduct(basketProductDC)
                 _removeFromBasketStatus.value = "success"
+                loadBasket(context)
             }catch (exception : Exception){
                 _removeFromBasketStatus.value = "exception"
             }
