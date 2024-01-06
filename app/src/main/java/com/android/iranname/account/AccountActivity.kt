@@ -22,9 +22,7 @@ import androidx.compose.material.rememberScaffoldState
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalDensity
@@ -51,7 +49,6 @@ class AccountActivity : ComponentActivity() {
                 ) {
                     val scaffoldState =
                         rememberScaffoldState(rememberDrawerState(DrawerValue.Closed))
-                    rememberCoroutineScope()
                     val navController = rememberNavController()
                     Scaffold(
                         scaffoldState = scaffoldState,
