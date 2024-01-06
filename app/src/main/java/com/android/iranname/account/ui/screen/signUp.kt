@@ -36,12 +36,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
-import com.android.iranname.account.db.UserDataBase
 import com.android.iranname.account.viewModel.SignUpViewModel
-import com.android.iranname.mainmenu.ui.model.homeScreenRoute
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 
 @Composable
@@ -69,15 +64,8 @@ fun SignUp(navHostController: NavHostController) {
     val onSignUpClicked: () -> Unit = {
         if (username.isNotEmpty()) {
 
-            CoroutineScope(Dispatchers.Default).launch {
-                println("hey")
-                viewModel.signUpApiService(username, email, password)
-                if (singUpResponse == "Registration successful") {
-                    viewModel.newUser?.let { UserDataBase(context).getUserDao().newUser(it) }
-                    println("hooey")
-                    viewModel.isLoggedChecked()
-                }
-            }
+            viewModel.signUpApiService(username, email, password, context)
+
         } else {
             // Handle empty username
         }
@@ -218,7 +206,7 @@ fun SignUp(navHostController: NavHostController) {
         println(singUpResponse + "hello")
         if (singUpResponse == "Registration successful") {
             Toast.makeText(context, "Signed up Successfully!", Toast.LENGTH_SHORT).show()
-            navHostController.navigate(homeScreenRoute)
+            navHostController.navigate("account")
         }
 
         TextButton(onClick = { navHostController.navigate("logIn") }) {

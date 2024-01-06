@@ -2,36 +2,30 @@ package com.android.iranname.commonServices.navigation
 
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.platform.LocalContext
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.android.iranname.account.db.User
-import com.android.iranname.account.db.UserDataBase
 import com.android.iranname.account.ui.screen.AccountPageScreen
 import com.android.iranname.account.ui.screen.LogIn
 import com.android.iranname.account.ui.screen.SignUp
+import com.android.iranname.account.viewModel.LogInViewModel
 import com.android.iranname.mainmenu.ui.model.homeScreenRoute
 import com.android.iranname.mainmenu.ui.screen.HomePageScreen
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 @ExperimentalMaterialApi
 @Composable
 fun AccountNavGraph(navHostController: NavHostController) {
     val context = LocalContext.current
-    var user: User? = null
-    CoroutineScope(Dispatchers.Default).launch {
-        try {
-            user = UserDataBase(context).getUserDao().getFirstUser()
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-    }
+    val viewModel: LogInViewModel = viewModel()
+    viewModel.loadUser(context)
+    val loadedUser by viewModel.loadedUser.collectAsState()
     NavHost(
         navController = navHostController,
-        startDestination = if (user == null )"logIn" else "account"
+        startDestination = if (loadedUser == null )"logIn" else "account"
     ) {
 
         composable(route = "SignUp") {
@@ -47,7 +41,7 @@ fun AccountNavGraph(navHostController: NavHostController) {
         }
 
         composable(route = "account") {
-            AccountPageScreen(user, navHostController)
+            AccountPageScreen(loadedUser, navHostController)
         }
     }
 }

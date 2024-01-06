@@ -1,8 +1,10 @@
 package com.android.iranname.account.viewModel
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.android.iranname.account.db.User
+import com.android.iranname.account.db.UserDataBase
 import com.android.iranname.commonServices.network.RetrofitClient.SignUpInstance
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -17,12 +19,18 @@ class SignUpViewModel : ViewModel() {
     val isUserSingedUp: StateFlow<Boolean> get() = _isUserSingedUp
 
     //this is our user information object
-    var newUser: User? = null
+    private val _newUser  = MutableStateFlow<User?>(null)
+    val newUser: StateFlow<User?> get() = _newUser
 
     /*
      * this is our service for register api request and its response handling
      */
-    suspend fun signUpApiService(username: String, email: String, password: String) {
+    fun signUpApiService(
+        username: String,
+        email: String,
+        password: String,
+        context: Context
+    ) {
         viewModelScope.launch {
             try {
                 val response = SignUpInstance.userSignUp(
@@ -31,12 +39,14 @@ class SignUpViewModel : ViewModel() {
                     email = email,
                     password2 = password
                 )
-                println(response)
+
                 _singUpResponse.value = response.message.toString()
                 _isUserSingedUp.value = response.success
                 //successful register request
                 if (response.success) {
-                    newUser = User(username, response.user_id)
+                    _newUser.value = User(username, response.user_id)
+                    _newUser.value?.let { UserDataBase(context).getUserDao().newUser(it) }
+                    isLoggedChecked()
                 }
             } catch (exception: Throwable) {
                 _singUpResponse.value = exception.message.toString()
@@ -48,7 +58,7 @@ class SignUpViewModel : ViewModel() {
     * this function will change _isUserSingedUp live data value to false
     * because we need to update it in future ->avoiding of conflicts
     */
-    fun isLoggedChecked() {
+    private fun isLoggedChecked() {
         _isUserSingedUp.value = false
     }
 }
